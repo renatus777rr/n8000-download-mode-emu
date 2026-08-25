@@ -1,5 +1,5 @@
 # GT-N8000 Download Mode & eMMC Emulator
-
+## READ! Tip: You can make this for other devices, but need other PIT file, and much modifications.
 A Linux-based software emulator of the Samsung GT-N8000 Download Mode / Odin-Loke flashing interface.
 
 The emulator exposes a virtual Samsung USB device using Linux USB Gadget + FunctionFS. Unmodified Heimdall can detect it, communicate with it, download and upload PIT files, repartition it, and flash real GT-N8000 firmware into a software-emulated eMMC image.
