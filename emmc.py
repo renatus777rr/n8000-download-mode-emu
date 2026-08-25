@@ -11,6 +11,10 @@ BOOTLOADER_PARTITIONS = {"BOOTLOADER", "BOTA0", "BOTA1"}
 ZERO_PARTITIONS = {"EFS", "OTA"}
 CHUNK_SIZE = 1024 * 1024
 
+BASE_DIR = Path(__file__).resolve().parent
+
+DEFAULT_IMAGE = BASE_DIR / "n8000-emmc.bin"
+DEFAULT_PIT = BASE_DIR / "note10.pit"
 
 def load_pit(path):
     _, _, _, _, entries = parse_pit(path)
@@ -268,16 +272,12 @@ def build_parser():
 
     parser.add_argument(
         "--image",
-        default="n8000-emmc.bin",
+        default=str(DEFAULT_IMAGE),
     )
 
     parser.add_argument(
         "--pit",
-        default=str(
-            Path.home() /
-            "Downloads" /
-            "note10.pit"
-        ),
+        default=str(DEFAULT_PIT),
     )
 
     parser.add_argument(
