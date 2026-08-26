@@ -603,8 +603,9 @@ class Loke:
 
         if self.temp_file is not None:
             self.temp_file.flush()
-
         if end_of_file:
+            flash_ok = False
+
             try:
                 actual_file_size = (
                     self.sequence_file_offset
@@ -648,6 +649,8 @@ class Loke:
                     flush=True,
                 )
 
+                flash_ok = True
+
                 try:
                     os.unlink(
                         self.temp_path
@@ -666,7 +669,7 @@ class Loke:
 
             self.send_response(
                 0x66,
-                0,
+                0 if flash_ok else 1,
             )
 
             return
